@@ -26,7 +26,7 @@ import (
 
 // HelloEventsStorage receives and processes a Cloud Audit Log event with Cloud Storage data.
 func HelloEventsStorage(w http.ResponseWriter, r *http.Request) {
-	s := fmt.Sprintf("Detected change in Cloud Storage bucket: %s", string(r.Header.Get("Ce-Subject")))
+	s := fmt.Sprintf("Detected change in Cloud Storage bucket: subject : %s, source : %s, type :%s, ", string(r.Header.Get("Ce-Subject")), string(r.Header.Get("Ce-Source")), string(r.Header.Get("Ce-Type")))
 	log.Printf(s)
 	fmt.Fprintln(w, s)
 }
